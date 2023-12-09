@@ -50,9 +50,9 @@ export default function Card({ img, desc , title  = "Titlle Comes Here"}) {
         />
       </CardOverflow>
 
-      <Box padding={2}>
-        <Typography noWrap >
-          {desc}
+      <Box padding={1} fontSize={{xs : 20, md : 25}}>
+        <Typography  >
+          {desc.length > 80  ? (desc.substring(0, 80) + "...") : desc}
         </Typography>
         <Box
           sx={{
@@ -68,10 +68,13 @@ export default function Card({ img, desc , title  = "Titlle Comes Here"}) {
             {" "}
             <Avatar src={img} />
             <Box
-              sx={{ display: "flex", flexDirection: "column", fontWeight: 800 }}
+              sx={{ display: "flex", flexDirection: "column", fontWeight: 800, fontSize : 30 }}
             >
               {" "}
+              <Typography>
+
               Full Name
+              </Typography>
               <Typography level="body-xs">43 min ago</Typography>
             </Box>
           </Box>

@@ -54,9 +54,9 @@ export default function Navbar() {
             direction="row"
             justifyContent="space-around"
             alignItems="center"
-            mx={"auto"}
+       mx={{sm : 3 , lg : 'auto'}}
             spacing={7}
-            sx={{ display: { xs: "none", sm: "flex" } }}
+            sx={{ display: { xs: "none", sm : 'flex'}, }}
           >
             <Box
               component={Link}
