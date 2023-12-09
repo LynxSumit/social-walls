@@ -88,8 +88,8 @@ const Home = () => {
         <Typography sx={{paddingLeft : '2em', flexBasis : '50%',fontSize : '1.5rem'}}>
         SHARE YOUR PHOTOS OR VIDEOS USING <Typography sx={{color: 'orangered'}}>#BEYERDYNAMIC</Typography> FOR THE  CHANCE TO GET FEATURED ON OUR SOCIAL WALL!
         </Typography>
-        <Box sx={{display : 'flex', marginX : '1rem', gap : 1.4, marginY : '1em'}}>
-<Typography  sx={{textTransform : 'uppercase', paddingLeft : '1em', flexBasis : '50%'}}>Follow Us : </Typography>
+        <Box sx={{display : 'flex', marginX : 'auto', gap : 1.4, marginY : '1em', alignItems : 'center'}}>
+<Typography  sx={{textTransform : 'uppercase', paddingLeft : '1em'}}>Follow Us : </Typography>
 <Instagram sx={{cursor : 'pointer', fontSize : 30, color : '#A353A6'}}/>
 <Facebook sx={{cursor : 'pointer', fontSize : 30, color : '#2763C2'}}/>
 <Twitter sx={{cursor : 'pointer', fontSize : 30, color : '#1D9BF0'}}/>
