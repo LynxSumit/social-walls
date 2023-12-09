@@ -41,7 +41,7 @@ export default function Navbar() {
           justifyContent: "space-between",
         }}
       >
-       <Box sx={{ display: { xs: "inline-flex", sm: "none" } , alignSelf : 'flex-start', marginLeft : '10px'}}>
+       <Box sx={{ display: { xs: "inline-flex", md: "none" } , alignSelf : 'flex-start', marginLeft : '10px'}}>
               <IconButton
                 variant="plain"
                 color="neutral"
@@ -54,9 +54,9 @@ export default function Navbar() {
             direction="row"
             justifyContent="space-around"
             alignItems="center"
-       mx={{sm : 3 , lg : 'auto'}}
+      mx={"auto"}
             spacing={7}
-            sx={{ display: { xs: "none", sm : 'flex'}, }}
+            sx={{ display: { xs: "none", md : 'flex'}, }}
           >
             <Box
               component={Link}
@@ -138,7 +138,7 @@ export default function Navbar() {
             </Box>
           </Stack>
           <Stack
-              sx={{ display: "flex", flexDirection: "row", float : 'right', marginRight : '10px'}}
+              sx={{ display: "flex", flexDirection: "row", float : 'right',marginRight : '10px'}}
             >
               <IconButton sx={{  }}>
                 <Search />
@@ -150,7 +150,7 @@ export default function Navbar() {
         </Box>
         <Drawer
                 size="lg"
-                sx={{ display: { xs: "inline-flex", sm: "none" } }}
+                sx={{ display: { xs: "inline-flex", md: "none" } }}
                 open={open}
                 onClose={() => setOpen(false)}
               >
