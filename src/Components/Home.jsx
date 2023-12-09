@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import Hero from './Hero'
 import { Box, Typography } from '@mui/joy'
 import { Facebook, Instagram, LinkedIn, MusicNoteSharp, Twitter } from '@mui/icons-material'
