@@ -85,7 +85,7 @@ const Home = () => {
       {/* Social Container  */}
 
       <Box sx={{display : 'flex', flexDirection : {xs : 'column', md : 'row', justifyContent : 'space-between', marginTop : '3rem', mx : '.5em'  }}}>
-        <Typography sx={{paddingLeft : '2em', flexBasis : '50%',fontSize : '1.5rem'}}>
+        <Typography sx={{paddingLeft : '2em', flexBasis : '50%',fontSize : '1.5rem', mx : 'auto'}}>
         SHARE YOUR PHOTOS OR VIDEOS USING <Typography sx={{color: 'orangered'}}>#BEYERDYNAMIC</Typography> FOR THE  CHANCE TO GET FEATURED ON OUR SOCIAL WALL!
         </Typography>
         <Box sx={{display : 'flex', marginX : 'auto', gap : 1.4, marginY : '1em', alignItems : 'center'}}>
