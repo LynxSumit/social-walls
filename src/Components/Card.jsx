@@ -16,7 +16,7 @@ export default function Card({ img, desc , title  = "Titlle Comes Here"}) {
         <ModalClose/>
           <DialogTitle>{title}</DialogTitle>
           <AspectRatio ratio={2}>
-         <img src={img} alt="ImageInModal" style={{ }} />
+         <img src={img} alt="ImageInModal" style={{ backgroundPosition : 'center', backgroundRepeat : 'no-repeat', backgroundSize : 'cover', backgroundBlendMode : 'multiply'}} />
 
           </AspectRatio>
           <DialogContent>{desc}</DialogContent>
