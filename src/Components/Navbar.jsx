@@ -41,7 +41,7 @@ export default function Navbar() {
           justifyContent: "space-between",
         }}
       >
-       <Box sx={{ display: { xs: "inline-flex", sm: "none" } , alignSelf : 'flex-start'}}>
+       <Box sx={{ display: { xs: "inline-flex", sm: "none" } , alignSelf : 'flex-start', marginLeft : '10px'}}>
               <IconButton
                 variant="plain"
                 color="neutral"
@@ -138,7 +138,7 @@ export default function Navbar() {
             </Box>
           </Stack>
           <Stack
-              sx={{ display: "flex", flexDirection: "row", float : 'right'}}
+              sx={{ display: "flex", flexDirection: "row", float : 'right', marginRight : '10px'}}
             >
               <IconButton sx={{  }}>
                 <Search />

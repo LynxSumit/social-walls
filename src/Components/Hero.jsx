@@ -38,13 +38,14 @@ const Hero = () => {
             sx={{
               display: "flex",
               justifyContent: "center",
+              alignItems : 'center',
               width: "100vw",
               height: "250px",
               flexDirection: "column",
               textAlign: "center",
               marginTop: "2vmax",
               paddingX: 2,
-              // zIndex: 3000,
+             
             }}
           >
             <Typography
