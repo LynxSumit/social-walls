@@ -191,7 +191,7 @@ export default function Navbar() {
                     <Divider/>
                     <Box sx={{  marginY: 4 }}>FAQ</Box>
                     <Divider/>
-                    {  <Box sx={{display : {md : 'none',  sm : 'flex', xs : 'flex'},flex : 1/4, marginX : 'auto', gap : 1.5, marginY : '2em', justifyContent : 'center', alignItems : 'center' }}>
+                    {  <Box sx={{display : {md : 'none',  sm : 'flex', xs : 'flex'},flex : 1/4, marginX : 'auto', gap : {sm : 1.5 , xs : 1}, marginY : '2em', justifyContent : 'center', alignItems : 'center' }}>
 <Typography  sx={{textTransform : 'uppercase', paddingLeft : '1em'}}>Follow Us : </Typography>
 <Instagram sx={{cursor : 'pointer', fontSize : 30, color : '#A353A6'}}/>
 <Facebook sx={{cursor : 'pointer', fontSize : 30, color : '#2763C2'}}/>

@@ -34,8 +34,8 @@ export default function Card({ img, desc , title  = "Titlle Comes Here"}) {
         borderRadius: "10px",
         mx : 'auto',
         maxWidth : 800,
-        minWidth : 300,
-        margin: 1.2,
+        minWidth : 240,
+        margin: 1.5,
         filter : 'drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.12))',
         cursor : 'pointer'
       }}
