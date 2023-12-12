@@ -8,7 +8,8 @@ import ModalClose from "@mui/joy/ModalClose";
 import DialogTitle from "@mui/joy/DialogTitle";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { Link } from "react-router-dom";
-import { Person2Outlined, Search } from "@mui/icons-material";
+import { Facebook, Instagram, LinkedIn, MusicNoteSharp, Person2Outlined, Search, Twitter } from "@mui/icons-material";
+import { Divider } from "@mui/joy";
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
@@ -55,7 +56,7 @@ export default function Navbar() {
             justifyContent="space-around"
             alignItems="center"
       mx={"auto"}
-            spacing={7}
+            spacing={5}
             sx={{ display: { xs: "none", md : 'flex'}, }}
           >
             <Box
@@ -150,39 +151,58 @@ export default function Navbar() {
         </Box>
         <Drawer
                 size="lg"
-                sx={{ display: { xs: "inline-flex", md: "none" } }}
+                sx={{ display: { xs: "inline-flex", lg : 'none' } }}
                 open={open}
                 onClose={() => setOpen(false)}
               >
-                <ModalClose />
+                <ModalClose sx={{my : 0.6}} />
                 <DialogTitle
                   sx={{
                     alignSelf: "center",
                     fontSize: "1.5rem",
                     fontWeight: 500,
-                    my: 1.4,
+                    my: 1.75,
+                    mb : 5
                   }}
                 >
                   beyerdynamic
                 </DialogTitle>
 
-                <Box sx={{ px: 1 }}>
+                <Box sx={{ px: 1,textAlign : 'center'}}>
                   <Box>
-                    <Box sx={{ alignSelf: "center", marginY: 4 }}>
+                    <Divider/>
+                    <Box sx={{ marginY: 4 }}>
                       Headphones and Headsets
                     </Box>
-                    <Box sx={{ alignSelf: "center", marginY: 4 }}>
+                    <Divider/>
+                    <Box sx={{ marginY: 4 }}>
                       Microphones
                     </Box>
-                    <Box sx={{ alignSelf: "center", marginY: 4 }}>
+                    <Divider/>
+                    <Box sx={{  marginY: 4 }}>
                       Conference Technology
                     </Box>
-                    <Box sx={{ alignSelf: "center", marginY: 4 }}>Company </Box>
-                    <Box sx={{ alignSelf: "center", marginY: 4 }}>
+                    <Divider/>
+                    <Box sx={{  marginY: 4 }}>Company </Box>
+                    <Divider/>
+                    <Box sx={{ marginY: 4 }}>
                       Services and support
                     </Box>
-                    <Box sx={{ alignSelf: "center", marginY: 4 }}>FAQ</Box>
+                    <Divider/>
+                    <Box sx={{  marginY: 4 }}>FAQ</Box>
+                    <Divider/>
+                    {  <Box sx={{display : {md : 'none',  sm : 'flex', xs : 'flex'},flex : 1/4, marginX : 'auto', gap : 1.5, marginY : '2em', justifyContent : 'center', alignItems : 'center' }}>
+<Typography  sx={{textTransform : 'uppercase', paddingLeft : '1em'}}>Follow Us : </Typography>
+<Instagram sx={{cursor : 'pointer', fontSize : 30, color : '#A353A6'}}/>
+<Facebook sx={{cursor : 'pointer', fontSize : 30, color : '#2763C2'}}/>
+<Twitter sx={{cursor : 'pointer', fontSize : 30, color : '#1D9BF0'}}/>
+<LinkedIn sx={{cursor : 'pointer', fontSize : 30, color : '#2763C2'}}/>
+<MusicNoteSharp sx={{cursor : 'pointer', fontSize : 30, color : '#050510'}}/>
+        </Box>
+     }
                   </Box>
+
+
                 </Box>
               </Drawer>
     </Box>

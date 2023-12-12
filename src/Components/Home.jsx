@@ -6,9 +6,9 @@ import Masonry from 'react-masonry-css'
 import Card from './Card'
 
 const breakpointColumnsObj = {
-  default: 4,
-  1100: 3,
-  700: 2,
+  default: 3,
+  1100 : 2,
+ 650 : 1,
   
 };
 const itemData = [
@@ -84,11 +84,11 @@ const Home = () => {
 
       {/* Social Container  */}
 
-      <Box sx={{display : 'flex', flexDirection : {xs : 'column', md : 'row', justifyContent : 'space-between', marginTop : '3rem', mx : 'auto', width : '100%'  }}}>
-        <Typography sx={{paddingLeft : '1em', fontSize : '1.4rem', marginX : '1em'}}>
+      <Box sx={{display : 'flex', flexDirection : {xs : 'column', md : 'row'}, justifyContent : 'space-between', marginTop : 3, mx : 'auto', width : '100%'  }}>
+        <Typography sx={{paddingLeft : '1em', fontSize : '1.4rem', marginX : '1em', flex : 1/2}}>
         SHARE YOUR PHOTOS OR VIDEOS USING <Typography sx={{color: 'orangered'}}>#BEYERDYNAMIC</Typography> FOR THE  CHANCE TO GET FEATURED ON OUR SOCIAL WALL!
         </Typography>
-        <Box sx={{display : 'flex',flex : 1/4, marginX : 'auto', gap : 1.4, marginY : '1em', alignItems : 'self-start'}}>
+     {  <Box sx={{display : {md : 'flex',  sm : 'none', xs : 'none'},flex : 1/2, marginX : '1em', gap : 1.4, alignItems : 'center', justifyContent : 'flex-end', }}>
 <Typography  sx={{textTransform : 'uppercase', paddingLeft : '1em'}}>Follow Us : </Typography>
 <Instagram sx={{cursor : 'pointer', fontSize : 30, color : '#A353A6'}}/>
 <Facebook sx={{cursor : 'pointer', fontSize : 30, color : '#2763C2'}}/>
@@ -96,6 +96,7 @@ const Home = () => {
 <LinkedIn sx={{cursor : 'pointer', fontSize : 30, color : '#2763C2'}}/>
 <MusicNoteSharp sx={{cursor : 'pointer', fontSize : 30, color : '#050510'}}/>
         </Box>
+     }
       </Box>
 
 

@@ -14,7 +14,7 @@ export default function Card({ img, desc , title  = "Titlle Comes Here"}) {
     <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog>
         <ModalClose/>
-          <DialogTitle>{title}</DialogTitle>
+          <DialogTitle >{title}</DialogTitle>
           <AspectRatio ratio={2}>
          <img src={img} alt="ImageInModal" style={{ backgroundPosition : 'center', backgroundRepeat : 'no-repeat', backgroundSize : 'cover', backgroundBlendMode : 'multiply'}} />
 
@@ -30,10 +30,12 @@ export default function Card({ img, desc , title  = "Titlle Comes Here"}) {
     onClick={() => setOpen(true)}
       variant="soft"
       sx={{
-        padding: "0",
+        padding: 0,
         borderRadius: "10px",
-        width: "auto",
-        margin: "1vmax",
+        mx : 'auto',
+        maxWidth : 800,
+        minWidth : 300,
+        margin: 1.2,
         filter : 'drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.12))',
         cursor : 'pointer'
       }}
@@ -60,7 +62,7 @@ export default function Card({ img, desc , title  = "Titlle Comes Here"}) {
             justifyContent: "space-between",
             alignItems: "center",
             gap :  2
-            , flexDirection : {xs : 'column', md : 'row'}
+            
           }}
           marginY={2}
         >
