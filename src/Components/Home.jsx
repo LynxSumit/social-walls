@@ -99,28 +99,7 @@ const Home = () => {
   const [open, setOpen] = useState(false);
   const submitHandler = async (data) => {
     let text = JSON.stringify(data)
-    //     const  {consumerKey , consumerSecret , accessToken , accessTokenSecret} = data
-    // console.log("gZixguUKaoSFqUnsERuOKrdjA".length)
-    // console.log("ir43U2a9FG988RqknCgP8xxC71YQF5G8g4xCX0kzFpBwT7WU78".length)
-    // console.log("1622852562071478272-B5jtYNVA9iChGHkWBBLM7GUC8q2KWH".length)
-    // console.log("0AYCwSP5COeXg7fkRGeMfsUn6y0IausgZvunjoxF7FdrN".length)
-    // if(consumerKey.length !== 25){
-    //   setOpen(false)
-    //   return toast.error("Consumer key invalid")
-    // }
-    // if(consumerSecret.length !== 50){
-    //   setOpen(false)
-    //   return toast.error("Consumer secret invalid")
-    // }
-    // if(accessToken.length !== 50){
-    //   console.log(accessToken)
-    //   setOpen(false)
-    //   return toast.error("Access Token invalid")
-    // }
-    // if(accessTokenSecret.length !== 45){
-    //   setOpen(false)
-    //   return toast.error("Access Token Secret invalid")
-    // }
+   
 
     let config = {
       method: 'post',
