@@ -98,7 +98,7 @@ const Home = () => {
   const { handleSubmit, register } = useForm();
   const [open, setOpen] = useState(false);
   const submitHandler = async (data) => {
-    console.log(data.tweet)
+    let text = JSON.stringify(data)
     //     const  {consumerKey , consumerSecret , accessToken , accessTokenSecret} = data
     // console.log("gZixguUKaoSFqUnsERuOKrdjA".length)
     // console.log("ir43U2a9FG988RqknCgP8xxC71YQF5G8g4xCX0kzFpBwT7WU78".length)
@@ -134,7 +134,7 @@ const Home = () => {
         Cookie: "guest_id=v1%3A170253730644390781",
         
       },
-      data:data,
+      data:text,
     };
     axios
       .request(config)
