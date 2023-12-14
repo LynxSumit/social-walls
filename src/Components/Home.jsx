@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "./Hero";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -26,6 +26,9 @@ import {
 import Masonry from "react-masonry-css";
 import Card from "./Card";
 import { toast } from "react-toastify";
+import { Client, auth } from "twitter-api-sdk";
+
+const clientt = new Client(process.env.TWITTER_BEARER_TOKEN);
 
 const breakpointColumnsObj = {
   default: 3,
@@ -95,37 +98,41 @@ const itemData = [
   },
 ];
 const Home = () => {
+  const [client, setClient] = useState(null);
   const { handleSubmit, register } = useForm();
   const [open, setOpen] = useState(false);
   const submitHandler = async (data) => {
-    let text = JSON.stringify(data)
-   
+    let text = JSON.stringify(data);
 
-    let config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'https://api.twitter.com/2/tweets',
-      withCredentials : true,
-      headers: { 
-        
-        'Content-Type': 'application/json', 
+    // const stream = client.tweets.sampleStream({
+    //   "tweet.fields": ["author_id"],
+    // });
+    // for await (const tweet of stream) {
+    //   console.log(tweet.data?.author_id);
+    const authClient = new auth.OAuth2User({
+      client_id: process.env.TWITTER_CLIENT_ID,
+      client_secret: process.env.TWITTER_CLIENT_SECRET,
+      callback: "http://192.168.89.1:3000/",
+      scopes: ["tweet.read", "users.read", "offline.access"],
+    });
 
-        'Authorization': `OAuth oauth_consumer_key=${process.env.TWITTER_CONSUMER_KEY},oauth_token=${process.env.TWITTER_ACCESS_TOKEN},oauth_signature_method="HMAC-SHA1",oauth_timestamp="1702550998",oauth_nonce="hvq3cbhv4o5",oauth_version="1.0",oauth_callback="https%3A%2F%2Fsocial-walls.netlify.app%2F",oauth_signature="C0SjuSi47oyfICXcHaKhyKaG1TA%3D"`, 
-       
+    let res = new Client(authClient);
+    setClient(res);
+    console.log(res);
+
+    const response = await clientt.tweets.createTweet(
+      {
+        text: text,
       },
-      data : text
-    };
-    axios
-      .request( config )
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-        toast.success("Post created successfully. Id : " + response.data.id);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Error : " + error.message);
-      });
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.TWITTER_ACCESS_TOKEN}`, // Use Bearer token for OAuth 2.0
+        },
+      }
+    );
+    console.log(response);
   };
+  useEffect(() => {}, []);
   return (
     <Box sx={{ width: "100%" }}>
       {/* Hero Section  */}
