@@ -126,8 +126,9 @@ const Home = () => {
       method: 'post',
       maxBodyLength: Infinity,
       url: 'https://api.twitter.com/2/tweets',
+      withCredentials : true,
       headers: { 
-        withCredentials : true,
+        
         'Content-Type': 'application/json', 
         'Authorization': 'OAuth oauth_consumer_key="V3cDYExoIK3fOKsPMluZ9G0Md",oauth_token="1622852562071478272-J48vN4ONchrl73JIaRn7PubVSCNSXd",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1702550998",oauth_nonce="hvq3cbhv4o5",oauth_version="1.0",oauth_callback="https%3A%2F%2Fsocial-walls.netlify.app%2F",oauth_signature="C0SjuSi47oyfICXcHaKhyKaG1TA%3D"', 
         'Cookie': 'guest_id=v1%3A170253730644390781'
@@ -135,7 +136,7 @@ const Home = () => {
       data : text
     };
     axios
-      .request(config)
+      .request( config )
       .then((response) => {
         console.log(JSON.stringify(response.data));
         toast.success("Post created successfully. Id : " + response.data.id);
