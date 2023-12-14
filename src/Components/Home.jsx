@@ -3,14 +3,14 @@ import Hero from "./Hero";
 import { useForm } from "react-hook-form";
 import axios from 'axios'
 import {
-  Alert,
+  
   Box,
   Button,
   DialogContent,
   DialogTitle,
   FormControl,
   FormLabel,
-  IconButton,
+  
   Input,
   Modal,
   ModalDialog,
@@ -97,7 +97,7 @@ const itemData = [
   },
 ];
 const Home = () => {
-  const { reset, formState: errors, handleSubmit, register } = useForm();
+  const {   handleSubmit, register } = useForm();
   const [open, setOpen] = useState(false);
   const submitHandler = async (data) => {
 //     const  {consumerKey , consumerSecret , accessToken , accessTokenSecret} = data
