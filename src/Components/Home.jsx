@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import Hero from "./Hero";
 import { useForm } from "react-hook-form";
-import axios from 'axios'
+import axios from "axios";
 import {
-  
   Box,
   Button,
   DialogContent,
   DialogTitle,
   FormControl,
   FormLabel,
-  
   Input,
   Modal,
   ModalDialog,
@@ -97,52 +95,55 @@ const itemData = [
   },
 ];
 const Home = () => {
-  const {   handleSubmit, register } = useForm();
+  const { handleSubmit, register } = useForm();
   const [open, setOpen] = useState(false);
   const submitHandler = async (data) => {
-//     const  {consumerKey , consumerSecret , accessToken , accessTokenSecret} = data
-// console.log("gZixguUKaoSFqUnsERuOKrdjA".length)
-// console.log("ir43U2a9FG988RqknCgP8xxC71YQF5G8g4xCX0kzFpBwT7WU78".length)
-// console.log("1622852562071478272-B5jtYNVA9iChGHkWBBLM7GUC8q2KWH".length)
-// console.log("0AYCwSP5COeXg7fkRGeMfsUn6y0IausgZvunjoxF7FdrN".length)
-// if(consumerKey.length !== 25){
-//   setOpen(false)
-//   return toast.error("Consumer key invalid")
-// }
-// if(consumerSecret.length !== 50){
-//   setOpen(false)
-//   return toast.error("Consumer secret invalid")
-// }
-// if(accessToken.length !== 50){
-//   console.log(accessToken)
-//   setOpen(false)
-//   return toast.error("Access Token invalid")
-// }
-// if(accessTokenSecret.length !== 45){
-//   setOpen(false)
-//   return toast.error("Access Token Secret invalid")
-// }
-   
-  
-  let config = {
-    method: 'post',
-    maxBodyLength: Infinity,
-    url: 'https://api.twitter.com/2/tweets',
-    headers: { 
-      'Content-Type': 'application/json', 
-      'Authorization': 'OAuth oauth_consumer_key="gZixguUKaoSFqUnsERuOKrdjA",oauth_token="1622852562071478272-B5jtYNVA9iChGHkWBBLM7GUC8q2KWH",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1702541197",oauth_nonce="305BofzH0yI",oauth_version="1.0",oauth_signature="iQCI2ZVpB5ImZ1rAa76D44mU7bU%3D"', 
-      'Cookie': 'guest_id=v1%3A170253730644390781'
-    },
-    data : data.tweet
-  };
-  axios.request(config)
-  .then((response) => {
-    console.log(JSON.stringify(response.data));
-    toast.success("Post created successfully. Id : " + response.data.id)
-  }).catch((error) => {
-    console.log(error);
-    toast.error("Error : " + error.message)
-  });  
+    console.log(data.tweet)
+    //     const  {consumerKey , consumerSecret , accessToken , accessTokenSecret} = data
+    // console.log("gZixguUKaoSFqUnsERuOKrdjA".length)
+    // console.log("ir43U2a9FG988RqknCgP8xxC71YQF5G8g4xCX0kzFpBwT7WU78".length)
+    // console.log("1622852562071478272-B5jtYNVA9iChGHkWBBLM7GUC8q2KWH".length)
+    // console.log("0AYCwSP5COeXg7fkRGeMfsUn6y0IausgZvunjoxF7FdrN".length)
+    // if(consumerKey.length !== 25){
+    //   setOpen(false)
+    //   return toast.error("Consumer key invalid")
+    // }
+    // if(consumerSecret.length !== 50){
+    //   setOpen(false)
+    //   return toast.error("Consumer secret invalid")
+    // }
+    // if(accessToken.length !== 50){
+    //   console.log(accessToken)
+    //   setOpen(false)
+    //   return toast.error("Access Token invalid")
+    // }
+    // if(accessTokenSecret.length !== 45){
+    //   setOpen(false)
+    //   return toast.error("Access Token Secret invalid")
+    // }
+
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://api.twitter.com/2/tweets",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          'OAuth oauth_consumer_key="gZixguUKaoSFqUnsERuOKrdjA",oauth_token="1622852562071478272-B5jtYNVA9iChGHkWBBLM7GUC8q2KWH",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1702541197",oauth_nonce="305BofzH0yI",oauth_version="1.0",oauth_signature="iQCI2ZVpB5ImZ1rAa76D44mU7bU%3D"',
+        Cookie: "guest_id=v1%3A170253730644390781",
+      },
+      data:data,
+    };
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        toast.success("Post created successfully. Id : " + response.data.id);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Error : " + error.message);
+      });
   };
   return (
     <Box sx={{ width: "100%" }}>
@@ -231,9 +232,13 @@ const Home = () => {
           <DialogContent>Fill in the information of the project.</DialogContent>
           <form onSubmit={handleSubmit(submitHandler)}>
             <Stack spacing={2}>
-            <FormControl>
+              <FormControl>
                 <FormLabel>Write your tweet Tweet</FormLabel>
-                <Input {...register("tweet", {required : true})} autoFocus required />
+                <Input
+                  {...register("tweet", { required: true })}
+                  autoFocus
+                  required
+                />
               </FormControl>
               {/* <FormControl>
                 <FormLabel>Consumer Key</FormLabel>
