@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Hero from "./Hero";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import {
   Box,
   Button,
@@ -26,9 +25,8 @@ import {
 import Masonry from "react-masonry-css";
 import Card from "./Card";
 import { toast } from "react-toastify";
-import { Client, auth } from "twitter-api-sdk";
+import { Client } from "twitter-api-sdk";
 
-const clientt = new Client(process.env.TWITTER_BEARER_TOKEN);
 
 const breakpointColumnsObj = {
   default: 3,
@@ -79,7 +77,7 @@ const itemData = [
   {
     img: "https://source.unsplash.com/random/city?",
     desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
+    Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
   },
   {
     img: "https://source.unsplash.com/random/pen?",
@@ -94,45 +92,40 @@ const itemData = [
   {
     img: "https://source.unsplash.com/random/girl?",
     desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
+    Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
   },
 ];
 const Home = () => {
-  const [client, setClient] = useState(null);
   const { handleSubmit, register } = useForm();
+  const clientt = new Client(process.env.TWITTER_BEARER_TOKEN);
   const [open, setOpen] = useState(false);
   const submitHandler = async (data) => {
     let text = JSON.stringify(data);
 
-    // const stream = client.tweets.sampleStream({
-    //   "tweet.fields": ["author_id"],
-    // });
-    // for await (const tweet of stream) {
-    //   console.log(tweet.data?.author_id);
-    const authClient = new auth.OAuth2User({
-      client_id: process.env.TWITTER_CLIENT_ID,
-      client_secret: process.env.TWITTER_CLIENT_SECRET,
-      callback: "http://192.168.89.1:3000/",
-      scopes: ["tweet.read", "users.read", "offline.access"],
-    });
-
-    let res = new Client(authClient);
-    setClient(res);
-    console.log(res);
-
-    const response = await clientt.tweets.createTweet(
-      {
-        text: text,
+  
+try {
+  const response = await clientt.tweets.createTweet(
+    {
+      text: text,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.TWITTER_ACCESS_TOKEN}`, 
       },
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.TWITTER_ACCESS_TOKEN}`, // Use Bearer token for OAuth 2.0
-        },
-      }
-    );
-    console.log(response);
+    }
+  );   
+  console.log(response)
+  toast.success("Tweet created successfully")
+} catch (error) {
+  console.log(error)
+  toast.error("Some Error Occurred")
+}
+   
+   
+
+
   };
-  useEffect(() => {}, []);
+  
   return (
     <Box sx={{ width: "100%" }}>
       {/* Hero Section  */}
