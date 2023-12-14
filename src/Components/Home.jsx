@@ -131,7 +131,7 @@ const Home = () => {
         "Access-Control-Allow-Origin" : "*",
         Authorization:
           'OAuth oauth_consumer_key="gZixguUKaoSFqUnsERuOKrdjA",oauth_token="1622852562071478272-B5jtYNVA9iChGHkWBBLM7GUC8q2KWH",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1702541197",oauth_nonce="305BofzH0yI",oauth_version="1.0",oauth_signature="iQCI2ZVpB5ImZ1rAa76D44mU7bU%3D"',
-        Cookie: "guest_id=v1%3A170253730644390781",
+       
         
       },
       data:text,
