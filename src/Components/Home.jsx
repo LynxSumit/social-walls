@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, {  useState } from "react";
 import Hero from "./Hero";
 import { useForm } from "react-hook-form";
 import {
@@ -25,10 +25,8 @@ import {
 
 import Masonry from "react-masonry-css";
 import Card from "./Card";
-import { toast } from "react-toastify";
 import axios from "axios";
-import { FacebookProvider, LoginButton, useLogin } from "react-facebook";
-import ChatBot from 'react-simple-chatbot';
+import { LoginButton } from "react-facebook";
 
 const breakpointColumnsObj = {
   default: 3,
