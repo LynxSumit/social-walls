@@ -6,14 +6,17 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './app/store';
+import { FacebookProvider } from 'react-facebook';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <FacebookProvider appId="244835431972368">
   
   <Provider store={store}>
 
     <App />
   </Provider>
+  </FacebookProvider>
   
 );
 

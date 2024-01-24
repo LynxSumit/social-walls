@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { Suspense, useState } from "react";
 import Hero from "./Hero";
 import { useForm } from "react-hook-form";
 import {
@@ -22,11 +22,13 @@ import {
   MusicNoteSharp,
   Twitter,
 } from "@mui/icons-material";
+
 import Masonry from "react-masonry-css";
 import Card from "./Card";
 import { toast } from "react-toastify";
-import { Client } from "twitter-api-sdk";
-
+import axios from "axios";
+import { FacebookProvider, LoginButton, useLogin } from "react-facebook";
+import ChatBot from 'react-simple-chatbot';
 
 const breakpointColumnsObj = {
   default: 3,
@@ -44,88 +46,37 @@ const itemData = [
     desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
   },
-  {
-    img: "https://source.unsplash.com/random/dance?",
-    desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
-  },
-  {
-    img: "https://source.unsplash.com/random/hot?",
-    desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
-  },
-  {
-    img: "https://source.unsplash.com/random/boy?",
-    desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
-  },
-  {
-    img: "https://source.unsplash.com/random/lion?",
-    desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
-  },
-  {
-    img: "https://source.unsplash.com/random/moon?",
-    desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
-  },
-  {
-    img: "https://source.unsplash.com/random/sky?",
-    desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
-  },
-  {
-    img: "https://source.unsplash.com/random/city?",
-    desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-    Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
-  },
-  {
-    img: "https://source.unsplash.com/random/pen?",
-    desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
-  },
-  {
-    img: "https://source.unsplash.com/random/book?",
-    desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
-  },
-  {
-    img: "https://source.unsplash.com/random/girl?",
-    desc: `Some Quick Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-    Quae, porro. Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ad tempore. Voluptate aut perspiciatis illum enim, exercitationem tenetur reprehenderit ratione laborum ipsam maiores aperiam obcaecati dolor expedita dignissimos impedit accusamus eveniet delectus laudantium pariatur.`,
-  },
 ];
 const Home = () => {
   const { handleSubmit, register } = useForm();
-  const clientt = new Client(process.env.TWITTER_BEARER_TOKEN);
   const [open, setOpen] = useState(false);
+
   const submitHandler = async (data) => {
-    let text = JSON.stringify(data);
-
-  
-try {
-  const response = await clientt.tweets.createTweet(
-    {
-      text: text,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.TWITTER_ACCESS_TOKEN}`, 
-      },
+    try{
+const res = await axios.get("http://localhost:4000/1734479723059917189")
+console.log(res)
+    }catch(err){
+      console.log(err)
     }
-  );   
-  console.log(response)
-  toast.success("Tweet created successfully")
-} catch (error) {
-  console.log(error)
-  toast.error("Some Error Occurred")
-}
-   
-   
-
-
   };
+  function handleSuccess(response) {
+    console.log(response.status);
+  }
+
+  function handleError(error) {
+    console.log(error);
+  }
+
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
   
+  const cookieValue = getCookie('');
+  console.log(cookieValue);
+  
+
   return (
     <Box sx={{ width: "100%" }}>
       {/* Hero Section  */}
@@ -197,6 +148,18 @@ try {
         {itemData.map((item, index) => (
           <Card key={index} img={item.img} desc={item.desc} />
         ))}
+        
+
+        <LoginButton
+    scope="email"
+    children={<span>Login via Facebook</span>}
+    onCompleted={handleSuccess}
+    onError={handleError}
+  >
+    <span>Login via Facebook</span>
+  </LoginButton>
+
+       
 
         <Button
           variant="soft"
