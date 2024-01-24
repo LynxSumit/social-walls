@@ -1,4 +1,4 @@
-import { Person2 } from '@mui/icons-material';
+// import { Person2 } from '@mui/icons-material';
 import { Avatar } from '@mui/joy';
 import { createChatBotMessage } from 'react-chatbot-kit';
 
